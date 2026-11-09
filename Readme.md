@@ -31,3 +31,14 @@ mkdir 01-hello-project
 cd 01-hello-project
 # edit main.tf
 terraform init
+
+terraform plan
+terraform apply  # puis yes
+terraform apply -auto-approve # !!
+
+docker image ls
+docker ps
+
+terraform state list
+terraform state show docker_container.hello
+```
