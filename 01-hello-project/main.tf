@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "docker" {
-    
+
 }
 
 resource "docker_image" "nginx" {
@@ -20,6 +20,6 @@ resource "docker_container" "hello" {
     name = "hello-nginx"
     ports {
         internal = 80
-        external = 8080
+        external = 8081
     }
 }
