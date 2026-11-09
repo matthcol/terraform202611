@@ -25,6 +25,11 @@ setx TF_PLUGIN_CACHE_DIR "$HOME/.terraform_cache"
 ### IDE
 VS Code + Extension HashiCorp Terraform
 
+## Provider Docker
+Nom : kreuzwerker/docker
+Lien: https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs
+
+
 ## 1er projet : Hello Nginx
 ```sh
 mkdir 01-hello-project
@@ -47,6 +52,8 @@ terraform destroy # puis yes
 
 ## 2e projet : Echo
 Provisionner l'image hashicorps/http-echo et un conteneur echo
-avec la commande -text=Bonjour depuis Terraform.
+avec la commande `-text=Bonjour depuis Terraform`.
 
-Le port par défaut de l'image est 5678. La commande se concatène à l'entrypoint qui lance toujours le serveur echo
+Le port par défaut de l'image est 5678. La commande se concatène à l'entrypoint qui lance toujours le serveur echo.
+
+Changer la commande par `-text=Bonjour depuis chez moi`.
