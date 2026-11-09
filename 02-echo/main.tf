@@ -15,12 +15,12 @@ resource "docker_image" "echo" {
   name = "hashicorp/http-echo:latest"
 }
 
-resource "docker_container" "echo1" {
-  image = docker_image.echo.image_id
-  name = "echo1"
-  command = ["-text=Bonjour depuis Terraform"]
-  ports {
-    internal = 5678
-    external = 8090
-  }
-}
+# resource "docker_container" "echo1" {
+#   image = docker_image.echo.image_id
+#   name = "echo1"
+#   command = ["-text=Bonjour depuis chez moi"]
+#   ports {
+#     internal = 5678
+#     external = 8090
+#   }
+# }

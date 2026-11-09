@@ -142,9 +142,26 @@ terraform apply -var="nb_containers=6"
     * fonctions : abs, ceil, floor, max, min, ...
 - string : "bonjour Terraform"
     * concaténation : template "${var.var1}, ${var.var2}, ...."
-    * fonctions : upper, lower, substr, ...
+    * fonctions : upper, lower, substr, length, ...
 - bool : true, false
     * opérateurs de comparaisons : ==, !=, <, >, <=, >=
     * opérateurs de logique : &&, ||, !  (resp. AND, OR, NOT)
+    * expression ternaire : cond ? val_vrai : val_faux
 
+### Types complexes
+- list(T) : list(string) : ["lundi", "mardi", "mercredi"]
+- set(T) : set(number) : [12, 23, 46] ou toset([....])
+- map(T) : map(number) : 
+```
+{
+    api = 8080
+    db = 3306
+    front = 80
+}
+```
+- object
+- tuple
+
+
+    * fonctions : length, sort, contains, concat, ...
 
