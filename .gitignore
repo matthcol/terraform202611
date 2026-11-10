@@ -2,4 +2,6 @@
 .terraform/
 
 *.dot
-graph.*
+graph*.*
+
+__draft__/

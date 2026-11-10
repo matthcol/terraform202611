@@ -177,3 +177,5 @@ Visualisation avec graphviz (à installer: https://graphviz.org/download/)
 dot -Tsvg graph.dot -o graph.svg
 dot -Tpng graph.dot -o graph.png
 ```
+
+Dépendances implicites à travers les variables resources.
