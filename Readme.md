@@ -219,3 +219,16 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+Note: upgrade (providers)
+```sh
+terraform init -upgrade
+terraform providers
+Providers required by configuration:
+# .
+# ├── provider[registry.terraform.io/kreuzwerker/docker] ~> 4.0
+# ├── module.web_01
+# │   └── provider[registry.terraform.io/kreuzwerker/docker]
+# └── module.web_logger
+#     └── provider[registry.terraform.io/kreuzwerker/docker]
+```

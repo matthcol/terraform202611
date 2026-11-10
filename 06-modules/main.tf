@@ -16,6 +16,10 @@ resource "docker_image" "nginx" {
     name = "nginx:alpine"
 }
 
+resource "docker_image" "echo" {
+    name = "hashicorp/http-echo"
+}
+
 # instanciation du module web_container
 module "web_01" {
     source = "./modules/web_container"   # localisation du module
@@ -37,3 +41,22 @@ module "web_logger" {
 
 # 3e instanciation du module web_container (echo)
 # - suffixe et ports
+module "web_echo" {
+    source = "./modules/web_container"
+
+    image_id = docker_image.echo.image_id
+    container_name_suffix = "echo"
+    external_port = 82
+    internal_port = 5678
+}
+
+# instaciation en boucle
+module "web_echo_multiple" {
+    source = "./modules/web_container"
+    count = 5
+
+    image_id = docker_image.echo.image_id
+    container_name_suffix = "echom-${count.index}"
+    internal_port = 5678
+    external_port = 83 + count.index
+}
