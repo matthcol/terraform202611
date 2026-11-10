@@ -2,7 +2,7 @@
 
 # debug attribut d'un conteneur
 output "debug_container_network_data" {
-    value = docker_container.mirror_module_outputs.network_data
+  value = docker_container.mirror_module_outputs.network_data
 }
 
 # collecte d'information (catalogue)
@@ -12,16 +12,22 @@ output "debug_container_network_data" {
 output "catalogue_containers" {
   value = {
     web_01 = {
-        name = module.web_01.container_name
-        ip = module.web_01.container_ip
+      name = module.web_01.container_name
+      ip   = module.web_01.container_ip
     }
     web_logger = {
-        name = module.web_logger.container_name
-        ip = module.web_logger.container_ip
+      name = module.web_logger.container_name
+      ip   = module.web_logger.container_ip
     }
     web_echo = {
-        name = module.web_echo.container_name
-        ip = module.web_echo.container_ip
+      name = module.web_echo.container_name
+      ip   = module.web_echo.container_ip
     }
+    web_echo_multiple = [
+      for c in module.web_echo_multiple : {
+        name = c.container_name
+        ip   = c.container_ip
+      }
+    ]
   }
 }

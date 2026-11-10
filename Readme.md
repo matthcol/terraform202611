@@ -232,3 +232,80 @@ Providers required by configuration:
 # └── module.web_logger
 #     └── provider[registry.terraform.io/kreuzwerker/docker]
 ```
+
+Note: faire le parallèle entre module TF avec variable et output et module ansible avec parameters et return value
+
+## Data et dépdendances
+Toujours dans le projet 06
+
+Installation au préalable de l'image
+```sh
+docker pull httpd:alpine
+```
+
+Image utilisable désormais dans le projet Terraform
+
+```sh
+terraform plan  # verifie de l'image externe (data)
+terraform apply # utilisation de l'image externe dans une resource container
+
+```
+
+Nettoyage plateforme
+```sh
+terraform destroy # detruit le conteneur (resource) utilisant l'image externe mmais pas cette image (data)
+```
+
+Graphe de dépendances inclus data:
+```sh
+terraform graph > graph.dot
+dot -Tpng graph.dot -o graph.png
+```
+
+Dépendances explicites avec `depends_on` => visible dans le graphe
+```sh
+terraform graph > graph.dot
+dot -Tpng graph.dot -o graph.png
+```
+
+## Gestion de plan
+```sh
+terraform plan -out tfplan  # save plan (binaire format)
+terraform apply tfplan
+terraform show tfplan   # format texte TF
+terraform show -json tfplan  # format JSON
+```
+
+## Qualité, Linting
+
+Linter, prettier
+```sh
+terraform fmt
+terraform fmt -recursive
+terraform fmt -check -recursive # si erreur : status_code faux => interrompt une chaine CI-CD
+terraform fmt -check -recursive -diff
+```
+
+Validateur
+```sh
+terraform validate
+```
+
+See also: tflint (https://github.com/terraform-linters/tflint)
+```sh
+tflint --chdir=.
+```
+
+## Tools
+- Terragrunt : gestion de configuration
+- Terraboard : GUI
+
+## Providers
+- hashicorp/random : generateur de noms, ids, ...
+
+- cloud : aws, google, ...
+- VMs : websphere
+
+=> nouveau type de ressources
+
+
