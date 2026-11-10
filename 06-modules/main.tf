@@ -18,12 +18,22 @@ resource "docker_image" "nginx" {
 
 # instanciation du module web_container
 module "web_01" {
-    source = "./modules/web_container"
+    source = "./modules/web_container"   # localisation du module
+
+    # inputs (variable) du module
     image_id = docker_image.nginx.image_id
 }
 
 # 2e instanciation du module web_container (nginx)
 # - suffixe et ports
+module "web_logger" {
+    source = "./modules/web_container"   # localisation du module
+
+    # inputs (variable) du module
+    image_id = docker_image.nginx.image_id
+    container_name_suffix = "logger"
+    external_port = 81
+}
 
 # 3e instanciation du module web_container (echo)
 # - suffixe et ports

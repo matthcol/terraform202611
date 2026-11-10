@@ -193,14 +193,29 @@ terraform refresh
 ## Modules
 Projet 06:
 ```sh
-tree
+tree        # linux
+tree /F     # windows
     # .
     # ├── main.tf
+    # ├── outputs.tf
+    # ├── variables.tf
     # ├── modules
     # │   └── web_container
     # │       ├── main.tf
     # │       ├── outputs.tf
     # │       └── variables.tf
-    # ├── outputs.tf
-    # └── variables.tf
+
+```
+
+Attention refaire un terraform init à chaque nouvelle instanciation de module
+
+```sh
+# start project
+terraform init
+# ...
+
+# nouvelle instance de module
+terraform init
+terraform plan
+terraform apply
 ```
