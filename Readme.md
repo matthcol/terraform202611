@@ -179,3 +179,28 @@ dot -Tpng graph.dot -o graph.png
 ```
 
 Dépendances implicites à travers les variables resources.
+
+## Outputs
+Visibles à la fin du apply ou refresh:
+* console
+* terraform.tfstate
+
+```sh
+terraform apply
+terraform refresh
+```
+
+## Modules
+Projet 06:
+```sh
+tree
+    # .
+    # ├── main.tf
+    # ├── modules
+    # │   └── web_container
+    # │       ├── main.tf
+    # │       ├── outputs.tf
+    # │       └── variables.tf
+    # ├── outputs.tf
+    # └── variables.tf
+```
