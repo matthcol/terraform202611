@@ -65,6 +65,8 @@ module "web_echo_multiple" {
 resource "docker_container" "mirror_module_outputs" {
     image = docker_image.echo.image_id
     name = "mirror_module_outputs"
+
+    # exemple utilisation output d'un module : module.<nom_module>.<nom_output>
     command = ["-text=logger container name = ${module.web_logger.container_name} ; logger ip = ${module.web_logger.container_ip}"]
     ports {
         internal =  5678
