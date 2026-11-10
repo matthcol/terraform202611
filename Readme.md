@@ -165,3 +165,15 @@ terraform apply -var="nb_containers=6"
 
     * fonctions : length, sort, contains, concat, ...
 
+## Dépendances
+
+```sh
+terraform graph
+terraform graph > graph.dot
+```
+
+Visualisation avec graphviz (à installer: https://graphviz.org/download/)
+```
+dot -Tsvg graph.dot -o graph.svg
+dot -Tpng graph.dot -o graph.png
+```
