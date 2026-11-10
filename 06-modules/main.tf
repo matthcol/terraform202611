@@ -53,10 +53,21 @@ module "web_echo" {
 # instaciation en boucle
 module "web_echo_multiple" {
     source = "./modules/web_container"
-    count = 5
+    count = var.nb_echo_multiple
 
     image_id = docker_image.echo.image_id
     container_name_suffix = "echom-${count.index}"
     internal_port = 5678
     external_port = 83 + count.index
+}
+
+# utilisation des outputs des modules instanciés
+resource "docker_container" "mirror_module_outputs" {
+    image = docker_image.echo.image_id
+    name = "mirror_module_outputs"
+    command = ["-text=logger container name = ${module.web_logger.container_name} ; logger ip = ${module.web_logger.container_ip}"]
+    ports {
+        internal =  5678
+        external = 9000
+    }
 }
